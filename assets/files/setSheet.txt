@@ -1,0 +1,86 @@
+Attribute VB_Name = "Module1"
+zSub WriteFile()
+    Dim TB_name As String      'テーブル名称（英語）
+    Dim a(1000) As String      '項目名称（英語）
+    Dim b(1000) As String      'データ型
+    Dim c(1000) As String      'Size
+    Dim d(1000) As String      'Null
+    Dim strFileName As String  '出力ファイル
+    Dim intFileNo As Integer
+    Dim PriKey As String       '主キー
+    
+    TB_name = ActiveSheet.Cells(5, 4).Value
+    strFileName = "C:\temp\" & TB_name & ".sql"
+    intFileNo = FreeFile
+    
+    '項目数を確認
+    j = 7
+    Do
+        j = j + 1
+        If IsEmpty(ActiveSheet.Cells(j, 5).Value) Then Exit Do
+    Loop
+    
+    'ファイル出力
+    Open strFileName For Output As #intFileNo
+    Print #intFileNo, "create table "; TB_name;
+    Print #intFileNo, vbNewLine;
+    Print #intFileNo, "("
+    
+    '項目1からn-1まで出力(n=最終行)
+    For i = 8 To j - 2
+        a(i) = ActiveSheet.Cells(i, 5).Value
+        b(i) = ActiveSheet.Cells(i, 6).Value
+        c(i) = ActiveSheet.Cells(i, 7).Value
+        d(i) = ActiveSheet.Cells(i, 11).Value
+        PriKey = ActiveSheet.Cells(8, 5).Value
+                
+        If c(i) = "" Then
+        Else
+            c(i) = "(" & c(i) & ")"
+        End If
+                        
+        If d(i) = "N" Then
+            d(i) = "NOT NULL"
+        End If
+        
+        b(i) = b(i) & c(i)
+        Print #intFileNo, "    "; a(i); " "; b(i); " "; d(i); ","
+        
+    Next
+    
+    '項目最終行出力(n=最終行)
+    a(i) = ActiveSheet.Cells(j - 1, 5).Value
+    b(i) = ActiveSheet.Cells(j - 1, 6).Value
+    c(i) = ActiveSheet.Cells(j - 1, 7).Value
+    d(i) = ActiveSheet.Cells(j - 1, 11).Value
+        
+    If c(i) = "" Then
+    Else
+        c(i) = "(" & c(i) & ")"
+    End If
+
+    If d(i) = "N" Then
+        d(i) = "NOT NULL"
+    End If
+    
+    b(i) = b(i) & c(i)
+    
+    Print #intFileNo, "    "; a(i); " "; b(i); " "; d(i); ","
+    Print #intFileNo, "    CONSTRAINT PK" & TB_name & " PRIMARY KEY (" & PriKey & ") USING INDEX"
+    Print #intFileNo, "         PCTFREE 10"
+    Print #intFileNo, "         INITRANS 2"
+    Print #intFileNo, "         MAXTRANS 255"
+    Print #intFileNo, "         TABLESPACE TS_" & TB_name & "_PK"
+    Print #intFileNo, "         STORAGE(INITIAL 64K NEXT 1M MINEXTENTS 1 MAXEXTENTS 2147483645 BUFFER_POOL DEFAULT)"
+    Print #intFileNo, "         LOGGING"
+    Print #intFileNo, "         ENABLE"
+    Print #intFileNo, ")"
+    Print #intFileNo, "PCTFREE 10"
+    Print #intFileNo, "MAXTRANS 255"
+    Print #intFileNo, "TABLESPACE TS_" & TB_name & "_D"
+    Print #intFileNo, "STORAGE(INITIAL 64K NEXT 1M MINEXTENTS 1 MAXEXTENTS 2147483645 BUFFER_POOL DEFAULT)"
+    Print #intFileNo, "NOCACHE"
+    Print #intFileNo, "LOGGING"
+    
+    Close intFileNo
+End Sub

@@ -17,6 +17,7 @@ import { EmployeeComponent } from './components/customer/employee/employee.compo
 import { DemoMaterialModule } from './material-module';
 import { DialogComponent } from './components/commans/dialog/dialog.component';
 import { LoginComponent } from './components/basic/login/login.component';
+import { NavComponent } from './components/basic/nav/nav.component';
 
 import { EmployeeService } from './servers/employee-server.service';
 import { HttpClientModule } from '@angular/common/http';
@@ -29,6 +30,7 @@ const myComponents = [
   DialogComponent,
   EmployeeComponent,
   LoginComponent,
+  NavComponent
 ];
 
 @NgModule({

@@ -1,0 +1,43 @@
+Attribute VB_Name = "模块1"
+Sub marge()
+     Dim sFile As String
+    Dim sWB As Workbook, dWB As Workbook
+    Dim dSheetCount As Long
+    Dim i As Long
+    Const SOURCE_DIR As String = "C:\Users\why\Desktop\create\"
+    Const DEST_FILE As String = "C:\Users\why\Desktop\create\AllReports.xls"
+    
+    Application.ScreenUpdating = False
+    Application.DisplayAlerts = False
+  
+    sFile = Dir(SOURCE_DIR & "*.xlsx")
+   
+    If sFile = "" Then Exit Sub
+     
+    Set dWB = Workbooks.Add
+    
+    dSheetCount = dWB.Worksheets.Count
+    
+    Do
+        Set sWB = Workbooks.Open(Filename:=SOURCE_DIR & sFile,UpdateLinks:=0)
+        
+        sWB.Worksheets(1).Copy After:=dWB.Worksheets(dSheetCount)
+        
+        ActiveSheet.Name = Range("F7").Value
+                
+        sWB.Close
+        
+        sFile = Dir()
+    Loop While sFile <> ""
+        
+    Application.DisplayAlerts = False
+    For i = dSheetCount To 1 Step -1
+        dWB.Worksheets(i).Delete
+    Next i
+    Application.DisplayAlerts = True
+
+    dWB.SaveAs Filename:=DEST_FILE
+    dWB.Close
+    
+    Application.ScreenUpdating = False
+End Sub

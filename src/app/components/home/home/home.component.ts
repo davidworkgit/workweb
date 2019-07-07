@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FileService } from 'src/app/servers/file.service';
 
 @Component({
   selector: 'why-home',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  constructor(private filesreve:FileService) { }
 
   ngOnInit() {
+    this.filesreve.getFiles()
+    .subscribe((data) => {
+      console.log(data);
+      window.open(data['margeFile']);
+  });
   }
 
 }

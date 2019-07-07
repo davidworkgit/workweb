@@ -3,11 +3,11 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "myFirstApp": {
+    "myweb": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
-      "prefix": "why",
+      "prefix": "app",
       "schematics": {
         "@schematics/angular:component": {
           "styleext": "styl"
@@ -17,15 +17,14 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/myFirstApp",
+            "outputPath": "dist/myweb",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "src/tsconfig.app.json",
             "assets": [
               "src/favicon.ico",
-              "src/assets",
-              "src/web.config"
+              "src/assets"
             ],
             "styles": [
               "src/styles.styl"
@@ -62,18 +61,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "myFirstApp:build"
+            "browserTarget": "myweb:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "myFirstApp:build:production"
+              "browserTarget": "myweb:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "myFirstApp:build"
+            "browserTarget": "myweb:build"
           }
         },
         "test": {
@@ -89,8 +88,7 @@
             "scripts": [],
             "assets": [
               "src/favicon.ico",
-              "src/assets",
-              "src/web.config"
+              "src/assets"
             ]
           }
         },
@@ -108,7 +106,7 @@
         }
       }
     },
-    "myFirstApp-e2e": {
+    "myweb-e2e": {
       "root": "e2e/",
       "projectType": "application",
       "prefix": "",
@@ -117,11 +115,11 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "myFirstApp:serve"
+            "devServerTarget": "myweb:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "myFirstApp:serve:production"
+              "devServerTarget": "myweb:serve:production"
             }
           }
         },
@@ -137,5 +135,5 @@
       }
     }
   },
-  "defaultProject": "myFirstApp"
+  "defaultProject": "myweb"
 }

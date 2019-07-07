@@ -8,14 +8,29 @@ import { FileService } from 'src/app/servers/file.service';
 })
 export class HomeComponent implements OnInit {
 
+  droplist: Map<string, string> = new Map();
+  path: string;
   constructor(private filesreve:FileService) { }
 
   ngOnInit() {
-    this.filesreve.getFiles()
+    this.path = 'assets/filepath.json';
+    this.filesreve.getFiles(this.path)
     .subscribe((data) => {
       console.log(data);
-      window.open(data['margeFile']);
-  });
+      for (var key in data) {
+        if (data.hasOwnProperty(key)) {
+          this.droplist.set(key,data[key]);
+        }
+      }
+   }); 
+  }
+
+  getText(e){
+    window.open(this.droplist.get(e.target.value), '_blank');
+    // this.filesreve.getFiles(this.droplist.get(e.target.value))
+    // .subscribe((data) => {
+    //   console.log(data);
+    // });
   }
 
 }

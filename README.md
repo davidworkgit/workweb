@@ -38,6 +38,6 @@ ng update @angular/cli @angular/core
 
 ng new myweb --minimal=true --prefix=why --routing=true --skipTests=true --style=styl
 
-ng build --prod --base-href https://davidworkgi.github.io/workweb/
+ng build --prod --base-href https://davidworkgit.github.io/workweb/
 
 ngh -no-silent

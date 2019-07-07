@@ -5,11 +5,11 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class FileService {
-  configUrl = 'assets/filepath.json';
+  
   constructor(private http: HttpClient) { 
   }
 
-  getFiles(){
-    return this.http.get(this.configUrl);
+  getFiles(path: any){
+    return this.http.get(path);
   }
 }

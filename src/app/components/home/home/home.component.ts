@@ -10,13 +10,13 @@ export class HomeComponent implements OnInit {
 
   droplist: Map<string, string> = new Map();
   path: string;
+  showdata :any;
   constructor(private filesreve:FileService) { }
 
   ngOnInit() {
     this.path = 'assets/filepath.json';
     this.filesreve.getFiles(this.path)
     .subscribe((data) => {
-      this.droplist.set('test','')
       for (var key in data) {
         if (data.hasOwnProperty(key)) {
           this.droplist.set(key,data[key]);
@@ -26,12 +26,12 @@ export class HomeComponent implements OnInit {
   }
 
   getText(e){
-    window.location.href = this.droplist.get(e.target.value);
+    //window.location.href = this.droplist.get(e.target.value);
     //window.open(this.droplist.get(e.target.value), '_blank');
-    // this.filesreve.getFiles(this.droplist.get(e.target.value))
-    // .subscribe((data) => {
-    //   console.log(data);
-    // });
+    this.filesreve.getFiles(this.droplist.get(e.target.value),"test")
+    .subscribe(data => {
+      this.showdata = data;
+    });
   }
 
 }

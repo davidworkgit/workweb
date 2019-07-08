@@ -1,3 +1,11 @@
-<select (change)="getText($event)">
-    <option *ngFor="let path of droplist.keys()">{{path}}</option>
-</select>
+<div>
+    <select (change)="getText($event)">
+        <option *ngFor="let path of droplist.keys()">{{path}}</option>
+    </select>
+</div>
+<div>
+    <textarea rows="50" cols="250">
+        {{showdata}}
+     </textarea>
+</div>
+

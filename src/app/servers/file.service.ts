@@ -9,7 +9,10 @@ export class FileService {
   constructor(private http: HttpClient) { 
   }
 
-  getFiles(path: any){
-    return this.http.get(path);
+  getFiles(path: any,type?: String){
+    if (type == null){
+      return this.http.get(path);
+    }
+    return this.http.get(path,{responseType:'text'});
   }
 }

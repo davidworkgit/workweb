@@ -1,4 +1,5 @@
 {
     "margeFile": "assets/files/margeFile.txt",
-    "setSheet": "assets/files/setSheet.txt"
+    "setSheet": "assets/files/setSheet.txt",
+    "getshelllist": "assets/files/getshelllist.txt"
   }

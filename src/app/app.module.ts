@@ -9,9 +9,9 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DialogoneComponent } from './components/material/dialogone/dialogone.component';
 import { HomepageComponent } from './components/homepage/homepage.component';
-import { VbaComponent } from './components/notes/vba/vba.component';
 import { DemoMaterialModule } from './material-module';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { InformationComponent } from './components/notes/information/information.component';
 
 
 @NgModule({
@@ -20,8 +20,8 @@ import { NavbarComponent } from './components/navbar/navbar.component';
     AppComponent,
     HomepageComponent,
     DialogoneComponent,
-    VbaComponent,
-    NavbarComponent
+    NavbarComponent,
+    InformationComponent
   ],
   imports: [
     BrowserModule,

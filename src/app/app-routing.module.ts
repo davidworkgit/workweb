@@ -1,12 +1,11 @@
 import { HomepageComponent } from './components/homepage/homepage.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { VbaComponent } from './components/notes/vba/vba.component';
-
+import { InformationComponent } from './components/notes/information/information.component';
 
 const routes: Routes = [
   { path: '', component: HomepageComponent},
-  { path: 'vba', component: VbaComponent},
+  { path: 'info/:infoId', component: InformationComponent},
 ];
 
 @NgModule({

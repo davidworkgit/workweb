@@ -1,0 +1,7 @@
+echo off
+	sqlplus aida02t/password@192.168.1.122/orcl @C:\Users\CatenaRentalSystem\Desktop\mybat\EXPORTORACLE.SQL
+pause
+
+
+rem settings
+rem --https://docs.oracle.com/cd/B19306_01/server.102/b14357/ch12040.htm

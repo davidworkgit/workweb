@@ -1,0 +1,5 @@
+echo off	
+	mysql -h localhost -uroot -p123456 sakila < C:\Users\CatenaRentalSystem\Desktop\mybat\EXPORTMYSQL.SQL 
+pause
+
+

@@ -1,0 +1,16 @@
+@echo off
+
+set CURRENT_PATH=%~dp0DDLCSV\
+
+set HOST=localhost
+set PORT=5432
+set USERID=postgres
+set DBNAME=mydb
+set PASS=123456
+set PGPASSWORD=123456
+
+rem exec query 
+	for %%i in (%CURRENT_PATH%*.csv) do (
+		psql  -h %HOST% -p %PORT% -U %USERID% -d %DBNAME% -c "\COPY %%~ni FROM '%%i' with csv"
+	)
+pause

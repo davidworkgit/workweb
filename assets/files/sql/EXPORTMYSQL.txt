@@ -1,0 +1,8 @@
+SELECT address_id,address,IF(address2='','\"\"',COALESCE(address2,"")),district,city_id,postal_code,phone,location,last_update
+FROM address 
+INTO OUTFILE 'C:/ProgramData/MySQL/MySQL Server 8.0/Uploads/test.csv'
+CHARACTER SET UTF8
+FIELDS TERMINATED BY ','
+ENCLOSED BY ''
+LINES TERMINATED BY '\n';
+ 

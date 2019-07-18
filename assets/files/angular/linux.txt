@@ -1,0 +1,66 @@
+﻿root 登录
+sudo su
+
+创建文件夹 
+mkdir
+
+查看ip
+ifconfig
+
+install命令
+$ sudo ./postgresql-10.1-3-linux-x64.run
+
+显示当前path
+pwd
+
+linux的path设定文件
+/etc/sudoers
+Defaults    secure_path = /sbin:/bin:/usr/sbin:/usr/bin ←path设定：分割
+
+启动 vi/vim
+i 切换到输入模式，以输入字符。
+x 删除当前光标所在处的字符。
+: 切换到底线命令模式，以在最底一行输入命令。
+
+指令行的储存、离开等指令
+:w	将编辑的数据写入硬盘档案中(常用)
+:w!	若文件属性为『只读』时，强制写入该档案。不过，到底能不能写入， 还是跟你对该档案的档案权限有关啊！
+:q	离开 vi (常用)
+:q!	若曾修改过档案，又不想储存，使用 ! 为强制离开不储存档案。
+
+sudo su postgres 进入psql模式 → psql ....command
+
+locate [OPTION]... [PATTERN]...
+  -b, --basename         match only the base name of path names
+  -c, --count            只输出找到的数量
+  -d, --database DBPATH  使用DBPATH指定的数据库，而不是默认数据库 /var/lib/mlocate/mlocate.db
+  -e, --existing         only print entries for currently existing files
+  -L, --follow           follow trailing symbolic links when checking file existence (default)
+  -h, --help             显示帮助
+  -i, --ignore-case      忽略大小写
+  -l, --limit, -n LIMIT  limit output (or counting) to LIMIT entries
+  -m, --mmap             ignored, for backward compatibility
+  -P, --nofollow, -H     don't follow trailing symbolic links when checking file existence
+  -0, --null             separate entries with NUL on output
+  -S, --statistics       don't search for entries, print statistics about eachused database
+  -q, --quiet            安静模式，不会显示任何错误讯息
+  -r, --regexp REGEXP    使用基本正则表达式
+      --regex            使用扩展正则表达式
+  -s, --stdio            ignored, for backward compatibility
+  -V, --version          显示版本信息
+  -w, --wholename        match whole path name (default)
+
+找到server重启
+systemctl list-units|grep postgresql
+service postgresql-10.service restart
+sudo systemctl restart postgresql
+
+tcp监听
+查看命令 →netstat -nlt 
+postgresql.conf → listen_addresses = 'localhost' to listen_addresses = '*'
+pg_hba.conf → host    all             all              0.0.0.0/0                       md5
+		host    all             all              ::/0                            md5
+
+
+
+

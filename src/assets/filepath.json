@@ -13,13 +13,11 @@
       {"title":"EXPORTMYSQL","path":"assets/files/sql/EXPORTMYSQL.txt","description":"test"},
       {"title":"EXPORTORACLE","path":"assets/files/sql/EXPORTORACLE.txt","description":"test"}
   ]
+  ,
   "angular":[
-    {"title":"copy","path":"assets/files/sql/copy.txt","description":"test"},
-    {"title":"create","path":"assets/files/sql/create.txt","description":"test"},
-    {"title":"ExportFromMysql","path":"assets/files/sql/ExportFromMysql.txt","description":"test"},
-    {"title":"ExportFromOracle","path":"assets/files/sql/ExportFromOracle.txt","description":"test"},
-    {"title":"EXPORTMYSQL","path":"assets/files/sql/EXPORTMYSQL.txt","description":"test"},
-    {"title":"EXPORTORACLE","path":"assets/files/sql/EXPORTORACLE.txt","description":"test"}
+    {"title":"ngcommand","path":"assets/files/angular/ngcommand.txt","description":"angular常用命令"},
+    {"title":"linux","path":"assets/files/angular/linux.txt","description":"linux常用命令"}
+   
   ]
   
 }

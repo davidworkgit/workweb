@@ -1,0 +1,36 @@
+
+npm update npm -g
+
+ng --version
+
+npm install -g @angular/cli
+
+npm install npm -g
+
+ng update @angular/cli @angular/core
+
+ng new myweb --minimal=true --prefix=why --routing=true --skipTests=true --style=styl
+
+ng build --prod --base-href https://davidworkgi.github.io/workweb/
+
+ngh -no-silent
+
+npm install --save @angular/material @angular/cdk @angular/animations
+ng add @angular/material
+imports: [
+    BrowserModule,
+    AppRoutingModule,
+    HttpClientModule,
+    BrowserAnimationsModule,
+    DemoMaterialModule,
+    FormsModule
+  ],
+
+
+npm install --save @angular/material @angular/cdk @angular/animations
+
+npm install @fortawesome/fontawesome-svg-core
+npm install @fortawesome/free-solid-svg-icons
+npm install @fortawesome/angular-fontawesome@<version>
+
+npm uninstall  ..

@@ -6,8 +6,8 @@
     ]
   ,
   "sql":[
-      {"title":"copy","path":"assets/files/sql/copy.txt","description":"test"},
-      {"title":"create","path":"assets/files/sql/create.txt","description":"test"},
+      {"title":"copy","path":"assets/files/sql/copy.txt","description":"PostgreSQL COPY"},
+      {"title":"create","path":"assets/files/sql/create.txt","description":"Execute file SQL PostgreSQL"},
       {"title":"ExportFromMysql","path":"assets/files/sql/ExportFromMysql.txt","description":"test"},
       {"title":"ExportFromOracle","path":"assets/files/sql/ExportFromOracle.txt","description":"test"},
       {"title":"EXPORTMYSQL","path":"assets/files/sql/EXPORTMYSQL.txt","description":"test"},
@@ -16,6 +16,9 @@
   ,
   "angular":[
     {"title":"ngcommand","path":"assets/files/angular/ngcommand.txt","description":"angular常用命令"},
+	{"title":"ng_new","path":"assets/files/angular/ng_new.txt","description":"ng_new命令"},
+	{"title":"ng_g_c","path":"assets/files/angular/ng_g_c.txt","description":"ng_g_c命令"},
+	{"title":"ng_g_m","path":"assets/files/angular/ng_g_m.txt","description":"ng_g_m命令"},
     {"title":"linux","path":"assets/files/angular/linux.txt","description":"linux常用命令"}
    
   ]

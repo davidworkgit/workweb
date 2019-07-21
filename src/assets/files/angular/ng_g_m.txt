@@ -1,0 +1,28 @@
+ng g module <name> [options]
+
+--flat=true|false	
+如果为true，则在当前项目根目录的顶级创建新文件。
+默认： false
+
+--lintFix=true|false	
+如果为true，则在生成模块后应用lint修复。
+
+默认： false
+
+--module=module	
+声明NgModule。
+别名： -m
+
+--project=project	
+项目名称。
+
+--route=route	
+创建延迟加载的路由模块。需要 - 模块选项。
+
+--routing=true|false	
+如果为true，则创建路由模块。
+默认： false
+
+--routingScope=Child|Root	
+新路由模块的范围。
+默认： Child

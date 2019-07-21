@@ -48,4 +48,7 @@ npm install @fortawesome/fontawesome-svg-core
 npm install @fortawesome/free-solid-svg-icons
 npm install @fortawesome/angular-fontawesome@<version>
 
+//npm i linq-to-typescript
+npm install linq-es2015 --save
+
 npm uninstall  ..

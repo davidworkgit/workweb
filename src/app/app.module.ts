@@ -14,6 +14,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { InformationComponent } from './components/notes/information/information.component';
 
 
+
 @NgModule({
   
   declarations: [
@@ -29,7 +30,7 @@ import { InformationComponent } from './components/notes/information/information
     HttpClientModule,
     BrowserAnimationsModule,
     DemoMaterialModule,
-    FormsModule
+    FormsModule,
   ],
   providers: [],
   entryComponents: [

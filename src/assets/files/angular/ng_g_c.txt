@@ -1,0 +1,79 @@
+ng g component <name> [options]
+
+--changeDetection=Default|OnPush	
+要在新组件中使用的更改检测策略。
+默认： Default
+别名： -c
+
+--entryComponent=true|false	
+如果为true，则新组件是声明NgModule的入口组件。
+默认： false
+
+--export=true|false	
+如果为true，则声明NgModule导出此组件。
+默认： false
+
+--flat=true|false	
+如果为true，则在当前项目的顶级创建新文件。
+默认： false
+
+--inlineStyle=true|false	
+如果为true，则在component.ts文件中包含内联样式。只能嵌入CSS样式。默认情况下，在component.ts文件中创建并引用外部样式文件。
+默认： false
+
+别名： -s
+
+--inlineTemplate=true|false	
+如果为true，则在component.ts文件中包含内联模板。默认情况下，会在component.ts文件中创建并引用外部模板文件。
+默认： false
+别名： -t
+
+--lintFix=true|false	
+如果为true，则在生成组件后应用lint修复。
+默认： false
+
+--module=module	
+声明NgModule。
+别名： -m
+
+--prefix=prefix	
+要应用于生成的组件选择器的前缀。
+别名：-p
+
+--project=project	
+项目名称。
+
+--selector=selector	
+用于此组件的HTML选择器。
+
+--skipImport=true|false	
+如果为true，则不会将此组件导入到拥有的NgModule中。
+默认： false
+
+--skipSelector=true|false	
+指定组件是否应具有选择器。
+默认： false
+
+--skipTests=true|false	
+如果为true，则不会为新组件创建“spec.ts”测试文件。
+默认： false
+
+--spec=true|false	
+不推荐使用：改用“skipTests”。
+如果为true（默认值），则为新组件生成“spec.ts”测试文件。
+默认： true
+
+--style=
+    css|scss|sass|less|styl	
+用于样式文件的文件扩展名或预处理器。
+默认： css
+
+--styleext=styleext	
+不推荐使用：改为使用“样式”。
+用于样式文件的文件扩展名。
+默认： css
+
+--viewEncapsulation=
+    Emulated|Native|None|ShadowDom	
+要在新组件中使用的视图封装策略。
+别名： -v

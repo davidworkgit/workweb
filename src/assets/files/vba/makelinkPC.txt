@@ -1,0 +1,1 @@
+mklink /D C:\develop\workspace\application\connect21-dev\docs C:\SVN\02_基本設計\10.アプリケーションタスク

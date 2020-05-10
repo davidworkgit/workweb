@@ -1,0 +1,28 @@
+Sub GetSheetList()
+    Dim sht             As Worksheet    
+    Dim bHiddenExistFlg As Boolean      
+    Dim i                              
+    
+    Sheets.Add before:=Sheets(1)
+  
+    ActiveSheet.Name = "sheetlist"
+     
+    i = 0
+    Range("B2").Activate
+
+    For Each sht In Sheets
+
+        ActiveCell.Offset(i, 0).NumberFormatLocal = "@"
+        ActiveCell.Offset(i, 0).Value = sht.Name
+        
+        ActiveSheet.Hyperlinks.Add Anchor:=ActiveCell.Offset(i, 0), Address:="", SubAddress:="'" & sht.Name & "'!A1", TextToDisplay:=sht.Name
+        
+        If (sht.Visible = xlSheetHidden) Or (sht.Visible = xlSheetVeryHidden) Then
+            ActiveCell.Offset(i, 0).Interior.ColorIndex = 15
+            bHiddenExistFlg = True
+        End If
+        
+        i = i + 1
+    Next
+    
+End Sub

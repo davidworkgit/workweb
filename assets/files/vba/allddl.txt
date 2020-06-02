@@ -1,0 +1,109 @@
+Sub GetSheetList()
+    Dim sht             As Worksheet
+
+    For Each sht In Sheets
+        sht.Activate
+        WriteFile
+ 
+    Next
+    
+End Sub
+
+Sub WriteFile()
+    Dim TB_name As String      'テーブル名称（英語）
+    Dim a(1000) As String      '項目名称（英語）
+    Dim b(1000) As String      'データ型
+    Dim c(1000) As String      'Size
+    Dim d(1000) As String      'Null
+    Dim e(1000) As String      'key
+    Dim strFileName As String  '出力ファイル
+    Dim intFileNo As Integer
+    Dim PriKey As String       '主キー
+    
+    Dim aa As String      '項目名称（英語）
+    Dim bb As String      'データ型
+    Dim cc As String      'Size
+    Dim dd As String      'Null
+    Dim ee As String      'key
+    
+    Dim isFirst As Boolean
+    
+    
+    PriKey = "PRIMARY KEY"
+    TB_name = ActiveSheet.Range("AD6").Value
+    strFileName = "C:\Users\k19H75\Desktop\DDL\" & TB_name & ".sql"
+    intFileNo = FreeFile
+    
+    '項目数を確認
+    j = 9
+    Do
+        j = j + 1
+        If IsEmpty(ActiveSheet.Cells(j, 2).Value) Then Exit Do
+    Loop
+    
+    'ファイル出力
+    Open strFileName For Output As #intFileNo
+    Print #intFileNo, "create table "; TB_name;
+    Print #intFileNo, vbNewLine;
+    Print #intFileNo, "("
+    
+    '項目1からn-1まで出力(n=最終行)
+    For i = 10 To j - 1
+        
+        aa = "G" & i
+        bb = "L" & i
+        cc = "O" & i
+        dd = "S" & i
+        ee = "T" & i
+        
+        a(i) = ActiveSheet.Range(aa).Value
+        b(i) = ActiveSheet.Range(bb).Value
+        c(i) = ActiveSheet.Range(cc).Value
+        d(i) = ActiveSheet.Range(dd).Value
+        e(i) = ActiveSheet.Range(ee).Value
+                
+        If c(i) = "" Then
+        Else
+            If b(i) = "decimal" Then
+            
+            Else
+               c(i) = "(" & c(i) & ")"
+            End If
+           
+        End If
+                        
+        If d(i) = "○" Then
+            d(i) = "NOT NULL"
+        End If
+        
+        b(i) = b(i) & c(i)
+        
+        Print #intFileNo, "    "; a(i); " "; b(i); " "; d(i); ","
+          
+    Next
+    
+    '項目最終行出力(n=最終行)
+    isFirst = True
+    Print #intFileNo, "PRIMARY KEY("
+    For i = 10 To j - 1
+        ee = "T" & i
+        e(i) = ActiveSheet.Range(ee).Value
+                
+        If e(i) = "○" Then
+            If isFirst = True Then
+                Print #intFileNo, a(i);
+                isFirst = False
+            Else
+                Print #intFileNo, ","; a(i);
+            End If
+        End If
+                    
+          
+    Next
+
+    Print #intFileNo, "))"
+    i = 0
+    j = 0
+    
+    Close intFileNo
+End Sub

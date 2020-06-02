@@ -1,0 +1,17 @@
+Sub 行列入替え()
+Dim 番号 As Long
+    番号 = ActiveSheet.Index
+    Sheets(番号).Range("A1").CurrentRegion.Copy
+    Sheets.Add(After:=ActiveSheet).Name = "貼付"
+    Range("A1").PasteSpecial Paste:=xlPasteAll,Transpose:=True
+With Sheets(番号).Range("A1").CurrentRegion
+    .ClearContents
+    .ClearFormats
+End With
+    Sheets("貼付").Range("A1").CurrentRegion.Copy Sheets(番号).Range("A1")
+    Application.DisplayAlerts = False
+      Sheets("貼付").Delete
+    Application.DisplayAlerts = True
+    Cells.Rows.AutoFit
+    Cells.Columns.AutoFit
+End Sub

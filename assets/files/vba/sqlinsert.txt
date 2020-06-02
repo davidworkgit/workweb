@@ -1,0 +1,88 @@
+Sub MakeSQL()
+'
+' MakeSQL Macro
+'
+' Keyboard Shortcut: Ctrl+w
+'
+    Dim currentCell As Range
+
+    Dim srcSheet As Worksheet
+    Set srcSheet = ActiveSheet
+
+    Dim targetRange As Range
+    Set targetRange = srcSheet.UsedRange
+
+    Dim tableName As String
+    tableName = srcSheet.Name
+
+    'INSERT文の前半を作成
+    Dim head As String
+    head = "INSERT INTO " & tableName & " ("
+
+    Dim currentColumnIndex As Integer
+    Dim currentRowIndex As Integer
+
+    currentRowIndex = targetRange.Row + 2
+
+    '列だけ繰り返す
+    For currentColumnIndex = targetRange.Column + 2 To targetRange.Columns.Count
+
+        '最初でなければ
+        If (currentColumnIndex <> targetRange.Column + 2) Then
+            head = head & ", "
+        End If
+
+        'セルを指定
+        Set currentCell = srcSheet.Cells(currentRowIndex, currentColumnIndex)
+        head = head & currentCell.Value
+    Next
+    head = head & ") "
+
+    Dim sql As String
+    sql = head & "values "
+
+    'INSERT文のvalues以降を作成
+    '行だけ繰り返す
+    For currentRowIndex = targetRange.Row + 8 To targetRange.Rows.Count
+
+         sql = head & "values ("
+
+        '列だけ繰り返す
+        For currentColumnIndex = targetRange.Column + 2 To targetRange.Columns.Count
+
+            '最初でなければ
+            If (currentColumnIndex <> targetRange.Column + 2) Then
+                sql = sql & ", "
+            End If
+
+            'セルを指定
+            Set currentCell = srcSheet.Cells(currentRowIndex, currentColumnIndex)
+
+            'nullか空白なら
+            If IsNull(currentCell) Or Trim(currentCell.Value) = "" Then
+                If Trim(srcSheet.Cells(7, currentColumnIndex).Value) = "○" Then
+                    srcSheet.Cells(currentRowIndex, currentColumnIndex).Interior.Color = RGB(255, 0, 0)
+                    MsgBox "赤セールの値が必須項目です。"
+                    Exit Sub
+                Else
+                     sql = sql & "null"
+                End If
+               
+            ElseIf Trim(srcSheet.Cells(4, currentColumnIndex).Value) = "int" Or Trim(srcSheet.Cells(4, currentColumnIndex).Value) = "decimal" Then
+                sql = sql & currentCell.Value
+            Else
+                If Len(currentCell.Value) > srcSheet.Cells(5, currentColumnIndex).Value Then
+                    srcSheet.Cells(currentRowIndex, currentColumnIndex).Interior.Color = RGB(255, 0, 0)
+                    MsgBox "赤セールの桁数が超えてます。"
+                    Exit Sub
+                Else
+                    sql = sql & "'" & currentCell.Value & "'"
+                End If
+           
+            End If
+        Next
+        sql = sql & ");"
+        'シートにinsert文を出力
+        srcSheet.Cells(currentRowIndex, targetRange.Columns.Count + 1).Value = sql
+    Next
+End Sub

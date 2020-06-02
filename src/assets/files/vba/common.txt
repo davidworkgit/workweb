@@ -1,0 +1,86 @@
+Attribute VB_Name = "Common"
+Option Explicit
+
+Public Enum enmGetFileTyoe
+    fileExcel = 1
+    fileAcess = 2
+End Enum
+
+Type FileRecord
+    InsertCount As Integer
+    ErrorCount As Integer
+End Type
+
+Public Const StrTable  As String = "testtable"
+Public Const MSG_TITLE As String = "messageTitle"
+
+Public Const DLG_XLSX     As Integer = 0
+Public Const DLG_CSV     As Integer = 1
+Public Const DLG_XLS     As Integer = 2
+Public Const DLG_MDB     As Integer = 3
+
+
+Public Function DeleteSpace(ByVal str As String)
+    str = Replace(str, "　", "")
+    DeleteSpace = Replace(str, " ", "")
+End Function
+
+Public Sub gsubExecute(rblnExecute As Boolean)
+    
+    If rblnExecute Then
+        DoCmd.SetWarnings False
+        DoCmd.Hourglass Ture
+    Else
+        DoCmd.SetWarnings True
+        DoCmd.Hourglass False
+    End If
+    
+End Sub
+
+Public Sub gsubError(rstrProcName As String)
+    Dim varNumber  As Variant
+    Dim varDescription As Variant
+    
+    varNumber = Err.Number
+    varDescription = Err.Description
+    
+    Call MsgBox(rstrProcName & ":" & varNumber & vbCrLf & varDescription, vbCritical, MSG_TITLE)
+End Sub
+
+Public Function gsubDialog(rintMode As Integer, rstrTitle As String) As String
+    Dim strText   As String
+    Dim strPath   As String
+    Dim strFile   As String
+    
+    gsubDialog = ""
+    On Error GoTo ErrorHandler
+    
+    With Application.FileDialog(msoFileDialogFilePicker)
+        .Title = rstrTitle
+        .Filters.Clear
+        Select Case rintMode
+            Case DLG_XLSX
+                .Filters.Add "Excelファイル(*.xlsx)", "*.xlsx"
+            Case DLG_XLS
+                .Filters.Add "Excelファイル(*.xlsx,*.xls,*.xlsm)", "*.xlsx,*xlsx,*.xlsm"
+            Case DLG_CSV
+                .Filters.Add "CSVファイル(*.csv,*.txt)", "*.csv,*.txt"
+            Case DLG_MDB
+                .Filters.Add "Accessファイル(*.mdb,*.accdb)", "*.mdb,*.accdb"
+        End Select
+        .AllowMultiSelect = False
+        .InitialFileName = CurrentProject.Path
+        If .Show = True Then
+            strText = .SelectedItems(1)
+        End If
+    End With
+    gsubDialog = strText
+    
+ExitHandler:
+    Exit Function
+ErrorHandler:
+    gsubDialog = ""
+    Call gsubError("gsubDialog")
+    Resume ExitHandler
+         
+End Function

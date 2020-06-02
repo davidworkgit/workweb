@@ -2,7 +2,15 @@
   "vba":[
       {"title":"margeExcelFile","path":"assets/files/vba/margeExcelFile.txt","description":"将多个Excel文件合并到一个Execl文件"},
       {"title":"setshellslinklist","path":"assets/files/vba/setshellslinklist.txt","description":"添加sheet，制作所有worksheet的超链接"},
-      {"title":"createSQL","path":"assets/files/vba/createSQL.txt","description":"根据table定义书，制作creatSQL语句"}
+      {"title":"createSQL","path":"assets/files/vba/createSQL.txt","description":"根据table定义书，制作creatSQL语句"},
+      {"title":"allddl","path":"assets/files/vba/allddl.txt","description":"根据table定义书，制作creatSQL语句"},
+      {"title":"ddl","path":"assets/files/vba/ddl.txt","description":"根据table定义书，制作creatSQL语句"},
+      {"title":"link","path":"assets/files/vba/link.txt","description":"根据table定义书，制作creatSQL语句"},
+      {"title":"margeExcelFile","path":"assets/files/vba/margeExcelFile.txt","description":"根据table定义书，制作creatSQL语句"},
+      {"title":"rowcloumchange","path":"assets/files/vba/rowcloumchange.txt","description":"根据table定义书，制作creatSQL语句"},
+      {"title":"setshellslinklist","path":"assets/files/vba/setshellslinklist.txt","description":"根据table定义书，制作creatSQL语句"},
+      {"title":"sqlinsert","path":"assets/files/vba/sqlinsert.txt","description":"根据table定义书，制作creatSQL语句"},
+      {"title":"common","path":"assets/files/vba/common.txt","description":"根据table定义书，制作creatSQL语句"}
     ]
   ,
   "sql":[
